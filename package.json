@@ -1,0 +1,36 @@
+{
+  "name": "snyk-qa-automation-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alyonakryvorychenko/snyk-qa-automation-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alyonakryvorychenko/snyk-qa-automation-test/issues"
+  },
+  "homepage": "https://github.com/alyonakryvorychenko/snyk-qa-automation-test#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.6.2",
+    "dotenv": "^17.2.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "playwright": "^1.55.1",
+    "playwright-core": "^1.55.1",
+    "undici-types": "^7.13.0"
+  }
+}
