@@ -8,6 +8,7 @@ export class LoginPage {
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
     readonly titlelocator: Locator; 
+    readonly errorMessage: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -16,6 +17,7 @@ export class LoginPage {
         this.passwordInput = page.locator('input[name="password"]');
         this.loginButton = page.locator('button:has-text("Login")');
         this.titlelocator = page.locator('h1');
+        this.errorMessage = page.locator('.form-group .card-body');
     }
 
     async openPage() {
@@ -28,5 +30,18 @@ export class LoginPage {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
+    }
+
+    async getErrorMessage(): Promise<string> {
+        return (await this.errorMessage.textContent() || '').trim();
+    }
+
+    async getClientValidationMessage(inputLocator: Locator): Promise<string> {
+        return await inputLocator.evaluate((element: HTMLInputElement) => element.validationMessage);
+    }
+
+    async checkBrowserNativeValidation(locator: Locator): Promise<void> {
+        const validationMessage = await this.getClientValidationMessage(locator);
+        expect(validationMessage).toBe('Please fill in this field.');
     }
 }
